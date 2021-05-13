@@ -1,0 +1,48 @@
+version: "3.3"
+services: 
+    text-analyzer:
+        container_name: text-analyzer
+        image: text-analyzer
+        build: 
+            context: ../text-analyzer
+        volumes: 
+            - ../text-analyzer:/app/text-analyzer
+        ports: 
+            - "8000:8000"
+        command: sh -c "python /app/text-analyzer/manage.py runserver 0.0.0.0:8000"
+    
+    db:
+        container_name: app-database
+        image: postgres:13-alpine
+        restart: always
+        environment: 
+            POSTGRES_PASSWORD: 10242048
+        volumes:
+            - ../app-database/postgres-init-script/:/docker-entrypoint-initdb.d
+            - ../app-database/data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+    
+    client:
+        container_name: app-client
+        image: app-client
+        build:
+            context: ../client
+        depends_on: 
+            - db 
+            - text-analyzer
+        volumes:
+            - ../client:/app/client
+            - /app/clinet/node_modules
+        ports:
+            - "3000:3000"
+        stdin_open: true
+    # server:
+    #     container_name: app-server
+    #     image: app-server
+    #     build: 
+    #         context: ../server
+    #     depends_on: 
+    #         - db
+    #         - text-analyzer
+    
