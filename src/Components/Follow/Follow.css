@@ -1,0 +1,15 @@
+.follow-button {
+  color: white;
+  background-color: grey;
+  height: auto;
+  font-weight: 700;
+  border: 0px;
+}
+
+.followed-button {
+  border: 0px;
+  color: white;
+  background-color: crimson;
+  height: auto;
+  font-weight: 700;
+}
