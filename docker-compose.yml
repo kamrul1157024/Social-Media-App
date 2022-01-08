@@ -29,14 +29,13 @@ services:
         build:
             context: ../social-app-client
         depends_on: 
-            - db 
-            - text-analyzer
+            - server
         volumes:
-            - ../client:/app/client
+            - ../social-app-client:/app/client
             - /app/clinet/node_modules
         ports:
-            - "3001:3000"
-        stdin_open: true
+            - "3080:3000"
+        command: bash -c "yarn start"
 
     server:
         container_name: app-server
