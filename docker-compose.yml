@@ -18,8 +18,8 @@ services:
         environment: 
             POSTGRES_PASSWORD: 10242048
         volumes:
-            - ../app-database/postgres-init-script/:/docker-entrypoint-initdb.d
-            - ../app-database/data:/var/lib/postgresql/data
+            - ./postgres-docker-init.d:/docker-entrypoint-initdb.d
+            - ~/.social-app-docker/app-database/data:/var/lib/postgresql/data
         ports:
             - "5432:5432"
     
@@ -27,7 +27,7 @@ services:
         container_name: app-client
         image: app-client
         build:
-            context: ../client
+            context: ../social-app-client
         depends_on: 
             - db 
             - text-analyzer
@@ -35,14 +35,20 @@ services:
             - ../client:/app/client
             - /app/clinet/node_modules
         ports:
-            - "3000:3000"
+            - "3001:3000"
         stdin_open: true
-    # server:
-    #     container_name: app-server
-    #     image: app-server
-    #     build: 
-    #         context: ../server
-    #     depends_on: 
-    #         - db
-    #         - text-analyzer
-    
+
+    server:
+        container_name: app-server
+        image: app-server
+        build:
+            context: ../social-app-server
+        depends_on:
+            - db
+            - text-analyzer
+        volumes:
+          - "../social-app-server:/app/server"
+        ports:
+          - "9090:9090"
+          - "5005:5005"
+        command: bash -c "mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005\""
