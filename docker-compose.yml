@@ -10,7 +10,14 @@ services:
         ports: 
             - "8000:8000"
         command: sh -c "python /app/text-analyzer/manage.py runserver 0.0.0.0:8000"
-    
+        restart: on-failure
+        healthcheck:
+            test: curl --fail http://localhost:8000/health/ || exit 1
+            interval: 5s
+            retries: 5
+            start_period: 2s
+            timeout: 2s
+
     db:
         container_name: app-database
         image: postgres:13-alpine
@@ -50,11 +57,11 @@ services:
         ports:
           - "9090:9090"
           - "5005:5005"
+        command: bash -c "mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005\""
         restart: on-failure
         healthcheck:
-            test: curl --fail http://app-server:9090/_health || exit 1
+            test: curl --fail http://app-server:9090/api/health || exit 1
             interval: 5s
             retries: 5
             start_period: 2s
             timeout: 2s
-        command: bash -c "mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005\""
