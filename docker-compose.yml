@@ -57,7 +57,7 @@ services:
         ports:
           - "9090:9090"
           - "5005:5005"
-        command: bash -c "mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005\""
+        command: bash -c "mvn spring-boot:run -Dspring.profiles.active=dev -Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005\""
         restart: on-failure
         healthcheck:
             test: curl --fail http://app-server:9090/api/health || exit 1
