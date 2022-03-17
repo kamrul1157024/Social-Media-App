@@ -44,6 +44,11 @@ If you can understand Bengali you can [watch the video](https://www.youtube.com/
 I created this app in 1-1.5 months as a pet project for learning. I had planned to add many features like notifications, friend list suggestions using graph DB, Search capability using elastic search. But I thought about stopping it here as it is not giving me considerable benefits for learning new technology.
 
 To run the app in you local your local you need to have docker installed in your system then run the following commands,
+you also need to install git-lfs for pulling the serialized machine learning models.
+
+```
+sudo apt-get install git-lfs
+```
 
 ```
 mkdir social-media-app
