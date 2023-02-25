@@ -9,7 +9,7 @@ services:
             - ../text-analyzer:/app/text-analyzer
         ports: 
             - "8000:8000"
-        command: sh -c "python /app/text-analyzer/manage.py runserver 0.0.0.0:8000"
+        command: sh -c "python3 /app/text-analyzer/manage.py runserver 0.0.0.0:8000"
         restart: on-failure
         healthcheck:
             test: curl --fail http://localhost:8000/health/ || exit 1
