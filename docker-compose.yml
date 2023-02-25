@@ -18,7 +18,7 @@ services:
             start_period: 2s
             timeout: 2s
 
-    db:
+    app-database:
         container_name: app-database
         build:
             context: ./database
@@ -26,32 +26,32 @@ services:
         environment: 
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: 10242048
-        # volumes:
-            # - ~/.social-app-docker/app-database/data:/var/lib/postgresql/data
+        volumes:
+            - ~/.social-app-docker/app-database/data:/var/lib/postgresql/data
         ports:
             - "5432:5432"
     
-    client:
+    app-client:
         container_name: app-client
         image: app-client
         build:
             context: ../social-app-client
         depends_on: 
-            - server
+            - app-server
         volumes:
             - ../social-app-client:/app/client
             - /app/clinet/node_modules
         ports:
-            - "3080:3000"
+            - "3081:3000"
         command: bash -c "yarn start"
 
-    server:
+    app-server:
         container_name: app-server
         image: app-server
         build:
             context: ../social-app-server
         depends_on:
-            - db
+            - app-database
             - text-analyzer
         volumes:
           - "../social-app-server:/app/server"
@@ -66,3 +66,18 @@ services:
             retries: 5
             start_period: 2s
             timeout: 2s
+
+    app-local-nginx:
+        container_name: app-local-nginx
+        image: app-local-nginx
+        build:
+            context: local-nginx
+        ports:
+            - "3080:80"
+        volumes:
+            - ./local-nginx/nginx.conf:/etc/nginx/nginx.conf
+        depends_on:
+            - app-server
+            - app-client
+        restart: unless-stopped
+        command: "supervisord -n"
