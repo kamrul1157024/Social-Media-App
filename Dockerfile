@@ -1,19 +1,12 @@
 FROM ubuntu:20.04
-
-RUN apt-get update
-
-RUN apt-get install -y nodejs
-
-RUN apt-get install -y npm
-
-RUN apt-get install -y wget
-
-RUN npm cache clean -f && npm install -g n && n stable
-
-RUN npm install --global yarn react-scripts react
-
+ENV DEBIAN_FRONTEND=noninteractive 
+RUN apt-get update&&apt-get install -y nodejs npm wget
+RUN rm -rf /usr/local/lib/node_modules \
+  &&npm cache clean -f \
+  && npm install -g n \
+  && n 18.14.2
+RUN npm install --g yarn
 WORKDIR /app/client
-
 COPY ./package.json ./
 COPY ./yarn.lock ./
 RUN yarn install
