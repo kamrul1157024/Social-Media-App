@@ -40,10 +40,11 @@ services:
             - app-server
         volumes:
             - ../social-app-client:/app/client
-            - /app/clinet/node_modules
+            - app_client_node_modules:/app/client/node_modules
+            - app_client_runner:/app/client/docker
         ports:
             - "3081:3000"
-        command: bash -c "yarn start"
+        command: /app/client/docker/runner.sh
 
     app-server:
         container_name: app-server
@@ -56,7 +57,7 @@ services:
         volumes:
           - "../social-app-server:/app/server"
         ports:
-          - "9090:9090"
+          - "9090:8080"
           - "5005:5005"
         command: bash -c "mvn spring-boot:run -Dspring.profiles.active=dev -Dspring-boot.run.jvmArguments=\"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005\""
         restart: on-failure
@@ -81,3 +82,8 @@ services:
             - app-client
         restart: unless-stopped
         command: "supervisord -n"
+
+volumes:
+    app_client_node_modules: {}
+    app_client_runner: {}
+
