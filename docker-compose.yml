@@ -43,7 +43,7 @@ services:
             - app_client_node_modules:/app/client/node_modules
             - app_client_runner:/app/client/docker
         ports:
-            - "3081:3000"
+            - "3081:3081"
         command: /app/client/docker/runner.sh
 
     app-server:
@@ -75,6 +75,7 @@ services:
             context: local-nginx
         ports:
             - "3080:80"
+            - "3000:80"
         volumes:
             - ./local-nginx/nginx.conf:/etc/nginx/nginx.conf
         depends_on:
