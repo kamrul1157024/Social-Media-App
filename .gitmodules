@@ -1,7 +1,9 @@
 [submodule "social-app-server"]
-    path = social-app-server
-    url = git@github.com:kamrul1157024/social-app-server.git
-
+	path = social-app-server
+	url = git@github.com:kamrul1157024/social-app-server.git
 [submodule "social-app-client"]
-    path = social-app-client
-    url = git@github.com:kamrul1157024/social-app-client.git
+	path = social-app-client
+	url = git@github.com:kamrul1157024/social-app-client.git
+[submodule "text-analyzer"]
+	path = text-analyzer
+	url = git@github.com:kamrul1157024/text-analyzer.git
