@@ -2,7 +2,7 @@ version: "3.4"
 services: 
     text-analyzer:
         container_name: text-analyzer
-        image: text-analyzer
+        image: text-analyzer:0.0.1
         build: 
             context: ../text-analyzer
         volumes: 
@@ -20,6 +20,7 @@ services:
 
     app-database:
         container_name: app-database
+        image: app-database:0.0.1
         build:
             context: ./database
         restart: always
@@ -33,7 +34,7 @@ services:
     
     app-client:
         container_name: app-client
-        image: app-client
+        image: app-client:0.0.1
         build:
             context: ../social-app-client
         depends_on: 
@@ -48,7 +49,7 @@ services:
 
     app-server:
         container_name: app-server
-        image: app-server
+        image: app-server:0.0.1
         build:
             context: ../social-app-server
         depends_on:
@@ -70,7 +71,7 @@ services:
 
     app-local-nginx:
         container_name: app-local-nginx
-        image: app-local-nginx
+        image: app-local-nginx:0.0.1
         build:
             context: local-nginx
         ports:

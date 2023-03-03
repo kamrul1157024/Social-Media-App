@@ -1,0 +1,7 @@
+[submodule "social-app-server"]
+  path = social-app-server
+  url = https://github.com/kamrul1157024/social-app-server
+
+[submodule "social-app-client"]
+  path = social-app-client
+  url = https://github.com/kamrul1157024/social-app-client
