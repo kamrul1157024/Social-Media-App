@@ -21,7 +21,7 @@ export class RegisterPage extends Component {
       city: "",
       country: "",
       gender: "",
-      dateOfBirth: "",
+      dateOfBirth: Date.now(),
       emailVisible: "",
     };
 

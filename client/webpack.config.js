@@ -15,7 +15,8 @@ module.exports = ({ mode } = { mode: "production" }) => {
         },
         devServer: {
             open: true,
-            port: 3000,
+            port: 3081,
+            historyApiFallback: true,
         },
         devtool: 'source-map',
         module: {
@@ -25,7 +26,7 @@ module.exports = ({ mode } = { mode: "production" }) => {
                     use: ["style-loader", "css-loader"],
                 },
                 {
-                    test: /\.jpe?g|png$/,
+                    test: /\.jpe?g|png|svg|gif|ico$/,
                     exclude: /node_modules/,
                     use: ["url-loader", "file-loader"]
                 },
@@ -38,7 +39,9 @@ module.exports = ({ mode } = { mode: "production" }) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                template: "./public/index.html"
+                template: "./public/index.html",
+                filename: './index.html',
+                favicon: './public/favicon.ico'
             }),
             new webpack.HotModuleReplacementPlugin(),
         ]
