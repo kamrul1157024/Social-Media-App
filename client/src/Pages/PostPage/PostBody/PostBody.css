@@ -1,0 +1,18 @@
+.post-text {
+  padding: 0px;
+  margin: 0px;
+}
+
+.comments {
+  padding-bottom: 50px;
+}
+
+@media only screen and (min-width: 768px) {
+  .post-text {
+    padding: 20px;
+  }
+
+  .container {
+    width: 900px;
+  }
+}

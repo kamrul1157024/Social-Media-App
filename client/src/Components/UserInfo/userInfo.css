@@ -1,0 +1,33 @@
+.app-container {
+  display: grid;
+  width: 280px;
+  grid-template-rows: 20px 25px;
+  grid-template-columns: 50px 60px 60px auto;
+  justify-content: left;
+}
+
+div.profile-picture {
+  grid-row: 1/-1;
+  grid-column: 1/2;
+}
+
+img.profile-picture {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+div.app-user-name {
+  grid-row: 1/2;
+  grid-column: 2/-1;
+}
+
+.follow {
+  grid-row: 2/-1;
+  grid-column: 3/4;
+}
+
+.post-time {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
