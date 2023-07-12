@@ -1,0 +1,90 @@
+.booklet-word {
+  text-align: center;
+  font-size: 30px;
+  font-weight: lighter;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.booklet {
+  padding: 5px;
+  margin-bottom: 100px;
+  justify-content: center;
+  align-content: center;
+}
+
+.booklet-title {
+  background-color: white;
+  font-size: 25px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 700;
+  padding: 8px;
+}
+
+.booklet-description {
+  background-color: white;
+  padding: 5px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  font-size: 16px;
+  justify-self: center;
+  align-self: center;
+  text-align: justify;
+  color: rgb(105, 103, 103);
+  border-bottom: 2px solid rgb(207, 203, 203);
+}
+
+.content {
+  margin-left: 15px;
+  margin-bottom: 10px;
+  font-family: Verdana;
+  min-height: 70px;
+  width: 95%;
+  justify-self: center;
+  border-bottom: 2px solid rgb(172, 172, 172);
+}
+
+.content-title {
+  align-content: left;
+  justify-self: left;
+  margin: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: left;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.content-details {
+  justify-self: left;
+  font-size: 16px;
+  font-weight: lighter;
+  margin: 5px;
+  text-align: justify;
+  color: rgb(122, 121, 121);
+}
+
+.content-external {
+  border-left: 7px solid crimson;
+}
+
+.content-internal {
+  border-left: 7px solid black;
+}
+
+.content-internal:hover {
+  border-left: 7px solid rgb(38, 95, 201);
+}
+
+.content-external:hover {
+  border-left: 7px solid rgb(38, 95, 201);
+}
+
+@media only screen and (min-width: 768px) {
+  .booklet {
+    width: 900px;
+    border: 1px solid darkgrey;
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+    padding: 20px;
+  }
+}
