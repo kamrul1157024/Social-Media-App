@@ -1,0 +1,19 @@
+.app-nav-bar {
+  background-color: white;
+  align-content: center;
+  justify-content: center;
+}
+
+.navbar-nav {
+  display: inline;
+  justify-self: center;
+  align-self: center;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.logged-in {
+  display: inline;
+}
