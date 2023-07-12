@@ -1,0 +1,46 @@
+.btn-login {
+  border-radius: 0;
+  padding: 5px;
+  margin: 0;
+  border: none;
+  background-color: tomato;
+  color: white;
+  width: 100px;
+}
+
+.btn-register {
+  border-radius: 0;
+  padding: 4px;
+  margin: 0;
+  border: none;
+  background-color: teal;
+  color: white;
+  width: 100px;
+}
+
+.btn-logout {
+  border: none;
+  background-color: white;
+  border-radius: 0;
+  padding: 4px;
+  margin: 0;
+  color: crimson;
+}
+
+.btn-login,
+.btn-register,
+.btn-logout {
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.btn-logout:hover {
+  border: none;
+  background-color: white;
+  border-radius: 0;
+  padding: 4px;
+  margin: 0;
+  color: blue;
+}

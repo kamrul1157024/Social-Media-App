@@ -1,0 +1,25 @@
+.code {
+  background-color: rgb(255, 255, 255);
+
+  border: 1px solid rgb(56, 53, 53);
+  font-weight: 500;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 1px;
+  white-space: pre;
+  overflow-x: scroll;
+}
+
+@media only screen and (min-width: 768px) {
+  .code {
+    background-color: rgb(255, 255, 255);
+
+    border: 1px solid rgb(56, 53, 53);
+    font-weight: 500;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 1px;
+    white-space: pre;
+    overflow-x: scroll;
+  }
+}
