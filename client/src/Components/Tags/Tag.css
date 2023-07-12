@@ -1,0 +1,14 @@
+.tag-btn {
+  margin: 1px;
+  border-radius: 1px;
+  font-weight: 550;
+  font-family: Georgia;
+  border-color: inherit;
+  border-width: 1px;
+  background-color: white;
+}
+
+.tag-btn:hover {
+  background-color: black;
+  color: white;
+}
